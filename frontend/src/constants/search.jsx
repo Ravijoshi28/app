@@ -4,8 +4,9 @@ import { User } from 'lucide-react'
 function  Search() {
     const [email,setEmail]=useState("")
 
-  const Checkuser=()=>{
-
+  const Checkuser=(e)=>{
+        e.preventDefault();
+        
   }
 
   return (
