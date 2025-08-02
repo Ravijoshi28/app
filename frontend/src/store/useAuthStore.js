@@ -52,7 +52,7 @@ set({authUser: res.data})
                 toast.success("User successfully logged in")
                 get().connectSocket();
             } catch (error) {
-                toast.error(errorresponse.data.message) 
+                toast.error(error.response.data.message) 
             }
             finally{
                 set({isLoggingIn:false});
@@ -87,16 +87,17 @@ set({authUser: res.data})
 
   
     connectSocket:()=>{
-        const {authUser}=get();
-        const socket=io(BASE_URL,{
-            query:{
-                userId:authUser._id,
-            },
-        })
-        
-        if(!authUser || get().socket?.connected){
-            return;
-        }
+       
+        const { authUser, socket: existingSocket } = get();
+
+if (!authUser || existingSocket?.connected) {
+    return;
+}
+
+const socket = io(BASE_URL, {
+    query: { userId: authUser._id },
+});
+
         console.log("connected");
 
         socket.connect();
@@ -110,6 +111,5 @@ set({authUser: res.data})
 
     disconnectSocket:()=>{
         if(get().socket?.connected) get().socket.disconnect();
-
     }
 }))
