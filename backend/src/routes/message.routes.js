@@ -16,7 +16,7 @@ catch{
 try{
 router.post("/send/:id",protectRoute,sendmsg);}
 catch{
-  catch{
+  
     console.log("error in sendmsg route");
 }
 }
