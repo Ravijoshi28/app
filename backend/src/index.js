@@ -19,19 +19,15 @@ dotenv.config();
     }));
 
    
-        try{
+        
             app.use("/api/auth",authroute);
-        }
-catch(error){
-    console.log("error in auth route");
-}
+        
 
-try{
+
+
     app.use("/api/message",msgrouter);
-        }
-catch{
-    console.log("error in message route");
-}
+        
+
 
 if(process.env.NODE_ENV==="production"){
     app.use(express.static(path.join(__dirname ,"../frontend/dist")))
