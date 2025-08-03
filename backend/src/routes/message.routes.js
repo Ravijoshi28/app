@@ -6,8 +6,19 @@ import {getmsgs, getusersidebar, sendmsg} from "../controllers/msg.controller.js
 const router=express.Router();
 
 router.get('/user',protectRoute,getusersidebar);
-router.get('/user/:id',protectRoute,getmsgs);
 
-router.post("/send/:id",protectRoute,sendmsg);
+try{
+router.get('/user/:id',protectRoute,getmsgs); }
+catch{
+    console.log("error in message getmsg route");
+}
+
+try{
+router.post("/send/:id",protectRoute,sendmsg);}
+catch{
+  catch{
+    console.log("error in sendmsg route");
+}
+}
 
 export default router;
