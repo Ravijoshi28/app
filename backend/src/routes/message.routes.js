@@ -19,6 +19,6 @@ catch{
   
     console.log("error in sendmsg route");
 }
-}
+
 
 export default router;
